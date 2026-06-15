@@ -14,6 +14,19 @@ app.use(express.json());
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/providers', require('./routes/providerRoutes'));
+app.use('/api/services', require('./routes/listingRoutes'));
+
+// Multer error handler
+app.use((err, req, res, next) => {
+  if (err.code === 'LIMIT_FILE_SIZE') {
+    return res.status(400).json({ success: false, message: 'File too large' });
+  }
+  if (err.message && err.message.includes('format')) {
+    return res.status(400).json({ success: false, message: 'Invalid file format' });
+  }
+  res.status(500).json({ success: false, message: err.message || 'Server error' });
+});
 
 // Health check
 app.get('/', (req, res) => res.json({ message: 'Teyzix API running' }));
