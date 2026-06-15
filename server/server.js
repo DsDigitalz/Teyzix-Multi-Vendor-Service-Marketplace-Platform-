@@ -16,6 +16,9 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/providers', require('./routes/providerRoutes'));
 app.use('/api/services', require('./routes/listingRoutes'));
+  app.use('/api/requests', require('./routes/requestRoutes')); 
+app.use('/api/reviews', require('./routes/reviewRoutes'));      
+app.use('/api/admin', require('./routes/adminRoutes'));
 
 // Multer error handler
 app.use((err, req, res, next) => {
