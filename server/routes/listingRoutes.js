@@ -12,8 +12,7 @@ const { verifyToken, checkRole } = require('../middleware/auth');
 const { uploadPortfolio } = require('../config/cloudinary');
 
 // Public routes
-router.get('/', getAllListings);                   // GET /api/services?q=&category=
-router.get('/:id', getListingById);               // GET /api/services/:id
+router.get('/', getAllListings);                   
 
 // Private — provider only
 router.get('/provider/my-listings', verifyToken, checkRole('provider'), getMyListings);
