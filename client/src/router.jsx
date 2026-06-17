@@ -56,6 +56,23 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      
+      {
+        path: 'dashboard/customer/requests',
+        element: (
+          <ProtectedRoute allowedRoles={['customer']}>
+            <CustomerDashboard />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'dashboard/provider/listings',
+        element: (
+          <ProtectedRoute allowedRoles={['provider']}>
+            <ProviderDashboard />
+          </ProtectedRoute>
+        ),
+      },
 
       { path: "*", element: <Navigate to="/services" replace /> },
     ],
