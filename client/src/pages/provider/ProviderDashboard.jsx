@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import toast from 'react-hot-toast'
 import { useAuth }      from '../../context/AuthContext'
+import ProfilePictureUpload from '../../components/ProfilePictureUpload'
+
 import {
   fetchMyRequests,
   updateStatus,

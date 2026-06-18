@@ -1,6 +1,8 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
+import CreateListing from "./pages/provider/CreateListing";
+import EditListing from "./pages/provider/EditListing";
 
 // Auth
 import Login from "./pages/auth/Login";
@@ -48,6 +50,23 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+
+      {
+        path: "dashboard/provider/listings/new",
+        element: (
+          <ProtectedRoute allowedRoles={["provider"]}>
+            <CreateListing />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "dashboard/provider/listings/edit/:id",
+        element: (
+          <ProtectedRoute allowedRoles={["provider"]}>
+            <EditListing />
+          </ProtectedRoute>
+        ),
+      },
       {
         path: "dashboard/admin",
         element: (
@@ -56,19 +75,19 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      
+
       {
-        path: 'dashboard/customer/requests',
+        path: "dashboard/customer/requests",
         element: (
-          <ProtectedRoute allowedRoles={['customer']}>
+          <ProtectedRoute allowedRoles={["customer"]}>
             <CustomerDashboard />
           </ProtectedRoute>
         ),
       },
       {
-        path: 'dashboard/provider/listings',
+        path: "dashboard/provider/listings",
         element: (
-          <ProtectedRoute allowedRoles={['provider']}>
+          <ProtectedRoute allowedRoles={["provider"]}>
             <ProviderDashboard />
           </ProtectedRoute>
         ),
